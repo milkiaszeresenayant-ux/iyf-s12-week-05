@@ -6,7 +6,20 @@
 - **GitHub:** [@milkiaszeresenayant-ux](https://github.com/milkiaszeresenayant-ux)
 - **Program:** IYF Weekend Academy — Season 12
 - **Date:** November 9, 2026
+## AI Assistance Disclosure
 
+I used GitHub Copilot for autocomplete suggestions while building this
+project. Every feature was planned by me, and I reviewed, tested, and
+debugged all generated code in the browser console before committing.
+
+Parts I wrote myself after Copilot's suggestions were wrong or incomplete:
+
+- The event-delegation handler using `closest()` so clicks on nested
+  elements (like an icon inside a delete button) still resolve correctly.
+- The `localStorage` guard that catches write failures (private browsing
+  or quota limits) and keeps the app usable for the current visit.
+- The single render path that keeps counts, filters, and empty states in
+  sync after every state change.
 ## Project Description
 
 This project practices selecting and traversing DOM elements, updating page content, creating and removing elements, responding to browser events, and validating forms. The main deliverable is **Daylight**, a responsive to-do list that keeps tasks and a theme preference in the browser.
