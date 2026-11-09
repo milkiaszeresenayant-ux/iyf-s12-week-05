@@ -1,0 +1,18 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+
+# Dependencies and local environment
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+coverage/

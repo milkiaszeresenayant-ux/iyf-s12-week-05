@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="A calm, accessible to-do list built with vanilla JavaScript and DOM manipulation.">
+    <title>Daylight — To-do list</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Daylight home">
+          <span class="brand-mark" aria-hidden="true">d</span>
+          <span>daylight</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Main navigation">
+          <a class="nav-link nav-link-current" href="./" aria-current="page">My tasks</a>
+          <a class="nav-link" href="dom-practice.html">DOM practice</a>
+          <a class="nav-link" href="daily-challenges/">Daily challenges</a>
+        </nav>
+        <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z"></path>
+          </svg>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <section class="welcome-row" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A LITTLE MORE FOCUS</p>
+            <h1 id="page-title">Make room for <span>what matters.</span></h1>
+            <p class="intro-copy">A clear mind starts with one small next step.</p>
+          </div>
+          <div class="date-card" aria-label="Your task list">
+            <span class="date-card-icon" aria-hidden="true">✦</span>
+            <span>YOUR SPACE</span>
+          </div>
+        </section>
+
+        <section class="todo-card" aria-labelledby="list-heading">
+          <div class="card-heading">
+            <div>
+              <p class="section-kicker">THE PLAN</p>
+              <h2 id="list-heading">Today's tasks</h2>
+            </div>
+            <span class="task-count" id="items-left">0 items left</span>
+          </div>
+
+          <form class="todo-form" id="todo-form">
+            <label class="sr-only" for="todo-input">Add a task</label>
+            <span class="input-plus" aria-hidden="true">+</span>
+            <input id="todo-input" name="task" type="text" maxlength="160" placeholder="What would you like to get done?" autocomplete="off" required>
+            <button class="add-button" type="submit"><span aria-hidden="true">+</span> Add task</button>
+          </form>
+
+          <p class="storage-status" id="storage-status" role="status" aria-live="polite"></p>
+
+          <div class="list-toolbar">
+            <div class="filters" role="group" aria-label="Filter tasks">
+              <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All <span id="all-count">0</span></button>
+              <button class="filter-button" type="button" data-filter="active" aria-pressed="false">To do <span id="active-count">0</span></button>
+              <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Done <span id="completed-count">0</span></button>
+            </div>
+            <button class="text-button clear-button" id="clear-completed" type="button" disabled>Clear completed</button>
+          </div>
+
+          <ul class="todo-list" id="todo-list" aria-label="Tasks"></ul>
+          <div class="empty-state" id="empty-state">
+            <span class="empty-illustration" aria-hidden="true">✳</span>
+            <h3 id="empty-title">A fresh start</h3>
+            <p id="empty-copy">Add a task above and take it one step at a time.</p>
+          </div>
+          <p class="keyboard-hint"><kbd>Double-click</kbd> a task to edit it <span aria-hidden="true">·</span> Your list saves on this device</p>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <span>Made for focused days <span aria-hidden="true">✦</span></span>
+        <a href="dom-practice.html">Explore the DOM exercises <span aria-hidden="true">→</span></a>
+      </footer>
+    </div>
+  </body>
+</html>

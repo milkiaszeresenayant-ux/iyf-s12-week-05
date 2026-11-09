@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hands-on examples for selecting, traversing, and changing the DOM and handling browser events.">
+    <title>DOM Practice — Week 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .practice-page {
+        width: min(900px, calc(100% - 36px));
+        margin: 0 auto;
+        padding: 38px 0 60px;
+      }
+
+      .practice-header,
+      .practice-section {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+      }
+
+      .practice-header {
+        margin-bottom: 18px;
+      }
+
+      .practice-header h1 {
+        margin-top: 12px;
+      }
+
+      .practice-header p,
+      .practice-section p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .practice-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .practice-section h2 {
+        margin-bottom: 14px;
+        font-size: 19px;
+      }
+
+      .practice-section h3 {
+        margin-bottom: 9px;
+        font-size: 15px;
+      }
+
+      .practice-header .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .nav-list a {
+        color: var(--accent-strong);
+        font-size: 13px;
+      }
+
+      .practice-article {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .practice-article .content {
+        margin-bottom: 8px;
+      }
+
+      .practice-controls,
+      .counter-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 14px 0;
+      }
+
+      .practice-controls button,
+      .counter-controls button,
+      .contact-form button {
+        min-height: 38px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--surface-soft);
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .practice-controls button:hover,
+      .counter-controls button:hover,
+      .contact-form button:hover {
+        border-color: var(--accent);
+      }
+
+      .practice-counter {
+        font-size: 28px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .demo-parent,
+      .demo-child {
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+
+      .demo-parent {
+        background: var(--accent-wash);
+      }
+
+      .demo-child {
+        margin-top: 9px;
+        background: var(--surface);
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 12px;
+        max-width: 450px;
+      }
+
+      .contact-field {
+        display: grid;
+        gap: 5px;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .contact-field input {
+        min-height: 42px;
+        padding: 9px 11px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--surface-soft);
+        color: var(--ink);
+      }
+
+      .contact-field input.error {
+        border-color: var(--danger);
+      }
+
+      .field-error {
+        min-height: 15px;
+        color: var(--danger);
+        font-size: 11px;
+        font-weight: 400;
+      }
+
+      .practice-status {
+        min-height: 22px;
+        margin: 8px 0 0;
+        color: var(--accent-strong);
+        font-size: 12px;
+      }
+
+      .practice-page .highlight {
+        border-radius: 4px;
+        background: #fff0a8;
+        color: #322800;
+      }
+
+      .practice-page .visually-changed {
+        padding: 14px;
+        border-radius: 10px;
+        background: var(--accent-wash);
+      }
+
+      @media (max-width: 600px) {
+        .practice-page {
+          padding-top: 22px;
+        }
+
+        .practice-header,
+        .practice-section {
+          padding: 18px;
+        }
+      }
+    </style>
+    <script src="dom.js" defer></script>
+  </head>
+  <body>
+    <div class="practice-page">
+      <header class="practice-header" id="main-header">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> LESSONS 9 &amp; 10</p>
+        <h1>DOM <span>practice.</span></h1>
+        <p>Use the controls to select, traverse, create, and update elements. Open your browser console to see the selection and traversal examples.</p>
+        <nav aria-label="Practice sections">
+          <ul class="nav-list">
+            <li><a href="#selecting" class="nav-link">Selecting</a></li>
+            <li><a href="#events" class="nav-link">Events</a></li>
+            <li><a href="#contact-form" class="nav-link">Form</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="practice-grid">
+        <section class="practice-section container" id="selecting">
+          <h2>9.1–9.4 · Select, traverse &amp; change</h2>
+          <article class="practice-article" data-id="article-1" data-category="practice">
+            <h3 class="title">A small DOM experiment</h3>
+            <p class="content">This is the first paragraph. Try highlighting every paragraph.</p>
+            <p class="content">This is the second paragraph. Add another one with the controls.</p>
+          </article>
+          <div class="practice-controls" aria-label="DOM controls">
+            <button type="button" id="highlight-button">Highlight paragraphs</button>
+            <button type="button" id="update-article-button">Update article text</button>
+            <button type="button" id="add-paragraph-button">Add paragraph</button>
+            <button type="button" id="remove-paragraph-button">Remove last added</button>
+            <button type="button" id="add-nav-button">Add nav item</button>
+            <button type="button" id="clone-nav-button">Clone first nav item</button>
+          </div>
+          <p class="practice-status" id="dom-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="practice-section" id="events">
+          <h2>10.1–10.3 · Events &amp; delegation</h2>
+          <h3>Click counter</h3>
+          <p class="practice-counter" id="counter-value" aria-live="polite">0</p>
+          <div class="counter-controls">
+            <button type="button" id="decrement-button" aria-label="Decrease counter">−</button>
+            <button type="button" id="increment-button" aria-label="Increase counter">+</button>
+            <button type="button" id="reset-counter-button">Reset</button>
+          </div>
+          <h3>Event bubbling</h3>
+          <p>Click the inner button. The console logs the child, then its parent, then the document.</p>
+          <div class="demo-parent" id="demo-parent">
+            Parent area
+            <div class="demo-child" id="demo-child">
+              Child area
+              <button type="button" id="demo-child-button">Click the child</button>
+            </div>
+          </div>
+          <p class="practice-status" id="event-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="practice-section">
+          <h2>10.4 · Form validation</h2>
+          <p>Try a short name or an invalid email. Keyboard shortcuts: Ctrl+S shows a save message, Escape clears the form, and Ctrl+Enter submits it.</p>
+          <form id="contact-form" class="contact-form" novalidate>
+            <label class="contact-field" for="name">
+              Name
+              <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
+              <span class="field-error" id="name-error"></span>
+            </label>
+            <label class="contact-field" for="email">
+              Email
+              <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error" required>
+              <span class="field-error" id="email-error"></span>
+            </label>
+            <button type="submit">Submit form</button>
+          </form>
+          <p class="practice-status" id="form-status" role="status" aria-live="polite"></p>
+        </section>
+      </main>
+      <footer class="page-footer">
+        <a href="./">← Back to the to-do list</a>
+        <a href="daily-challenges/">Try the daily challenges →</a>
+      </footer>
+    </div>
+  </body>
+</html>

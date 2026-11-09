@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Five small, interactive DOM manipulation challenges for Week 5.">
+    <title>Daily DOM Challenges — Week 5</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="challenges.css">
+    <script src="challenges.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell challenges-shell">
+      <header class="topbar">
+        <a class="brand" href="../" aria-label="Daylight home">
+          <span class="brand-mark" aria-hidden="true">d</span>
+          <span>daylight</span>
+        </a>
+        <nav class="topbar-nav" aria-label="Main navigation">
+          <a class="nav-link" href="../">My tasks</a>
+          <a class="nav-link" href="../dom-practice.html">DOM practice</a>
+          <a class="nav-link nav-link-current" href="./" aria-current="page">Daily challenges</a>
+        </nav>
+      </header>
+
+      <main class="challenges-main">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> FIVE SMALL EXPERIMENTS</p>
+        <h1>Make the page <span>come alive.</span></h1>
+        <p class="challenges-intro">Each challenge is a little playground for selecting, creating, and changing elements with JavaScript.</p>
+
+        <div class="challenge-grid">
+          <section class="challenge-card" aria-labelledby="color-title">
+            <p class="challenge-number">DAY 01</p>
+            <h2 id="color-title">A fresh color</h2>
+            <p>Change every heading to the same random hex color.</p>
+            <div class="color-preview">
+              <h3>Small steps</h3>
+              <h4>Still move you forward</h4>
+            </div>
+            <button class="challenge-button" id="change-color" type="button">Change heading color</button>
+            <p class="challenge-status" id="color-status" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="challenge-card" aria-labelledby="paragraph-title">
+            <p class="challenge-number">DAY 02</p>
+            <h2 id="paragraph-title">A new thought</h2>
+            <p>Add a numbered paragraph. Remove any thought when you're ready.</p>
+            <button class="challenge-button" id="add-paragraph" type="button">Add a paragraph</button>
+            <ol class="thought-list" id="thought-list" aria-label="Numbered thoughts"></ol>
+          </section>
+
+          <section class="challenge-card" aria-labelledby="image-title">
+            <p class="challenge-number">DAY 03</p>
+            <h2 id="image-title">Clear the canvas</h2>
+            <p>Remove the images from the page, then bring them back.</p>
+            <div class="image-gallery" id="image-gallery">
+              <img src="sample-image.svg" alt="Abstract sunrise over a green hill">
+              <img src="sample-image.svg" alt="Abstract sunrise over a green hill">
+            </div>
+            <button class="challenge-button" id="toggle-images" type="button">Remove images</button>
+            <p class="challenge-status" id="image-status" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="challenge-card" aria-labelledby="copy-title">
+            <p class="challenge-number">DAY 04</p>
+            <h2 id="copy-title">Pass it along</h2>
+            <p>Copy the note with a click, or drag it into the open space.</p>
+            <div class="copy-playground">
+              <div class="copy-source" id="copy-source" draggable="true" tabindex="0">
+                <span aria-hidden="true">✦</span>
+                <p>Good things take practice.</p>
+                <small>Click or drag this note</small>
+              </div>
+              <div class="copy-target" id="copy-target" tabindex="0" aria-label="Copied content area">
+                <span class="target-placeholder">Your copied note will appear here.</span>
+              </div>
+            </div>
+            <button class="challenge-button" id="copy-note" type="button">Copy the note</button>
+            <p class="challenge-status" id="copy-status" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="challenge-card challenge-card-theme" aria-labelledby="theme-title">
+            <p class="challenge-number">DAY 05</p>
+            <h2 id="theme-title">A softer evening</h2>
+            <p>Switch the page theme. Your preference is saved on this device.</p>
+            <div class="theme-preview" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <button class="challenge-button" id="toggle-theme" type="button" aria-pressed="false">Turn on dark mode</button>
+            <p class="challenge-status" id="theme-status" role="status" aria-live="polite"></p>
+          </section>
+        </div>
+      </main>
+
+      <footer class="page-footer">
+        <a href="../dom-practice.html">← Back to DOM practice</a>
+        <a href="../">Back to the to-do list →</a>
+      </footer>
+    </div>
+  </body>
+</html>

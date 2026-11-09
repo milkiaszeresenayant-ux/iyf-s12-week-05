@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="title">
+  <title id="title">Soft sunrise above rolling hills</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#d9d4ff"/>
+      <stop offset="1" stop-color="#f8d9c7"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h320v180H0z"/>
+  <circle cx="228" cy="68" r="31" fill="#fff1b7"/>
+  <path fill="#9abca2" d="M0 135c48-35 88-38 135-8 39-35 88-45 185-5v58H0z"/>
+  <path fill="#668c78" d="M0 151c65-33 113-20 164 5 48-39 99-37 156-14v38H0z"/>
+</svg>
